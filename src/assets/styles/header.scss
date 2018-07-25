@@ -1,0 +1,21 @@
+.page-header {
+  height: 80px;
+  background-color: #282d30;
+
+  @media screen and (min-width: 720px) {
+    height: 100px;
+  }
+}
+
+.logo {
+  padding: 13px 5px 0;
+  display: block;
+
+  @media screen and (min-width: 720px) {
+    padding: 5px 75px 0;
+  }
+
+  @media screen and (min-width: 980px) {
+    padding: 5px 21.5% 0;
+  }
+}
