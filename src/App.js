@@ -12,7 +12,7 @@ class App extends Component {
       <div className='app'>
         <header className='page-header'>
           <div className='container'>
-            <a href='index.html' className='logo'>
+            <a href='index.html' className='logo' tabIndex='-1'>
               <picture>
                 <source srcSet={`${logoMediumRetina} 2x`} media='(min-width: 720px)' type='image/png'/>
                 <source srcSet={`${logoMedium}`} media='(min-width: 720px)' type='image/png'/>

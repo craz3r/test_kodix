@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
 import './style.css';
 
+const increasePrice = (price, percent) => {
+  return Math.round(price * ((100 + percent) / 100)).toLocaleString('ru-RU');
+}
+
 export default class ResultTable extends Component {
   fetchItems = () => {
     this.props.fetchItems();
@@ -44,7 +48,10 @@ export default class ResultTable extends Component {
                     <td className='results__year'>{item.year}</td>
                     <td className='results__color'><span className={item.color}>{item.color}</span></td>
                     <td className='results__status'>{item.status}</td>
-                    <td className='results__price'>{item.price.toLocaleString('ru-RU')} руб.</td>
+                    <td className='results__price'>
+                      {item.price.toLocaleString('ru-RU')} руб.
+                      <span className='increase'>{increasePrice(item.price, 13)} руб.</span>
+                    </td>
                     <td className='results__delete'><button className='delete-button' onClick={this.deleteItem(item.id)}>Удалить</button></td>
                     <td className='results__desc'>{item.description}</td>
                   </tr>

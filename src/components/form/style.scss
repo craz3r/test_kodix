@@ -173,6 +173,10 @@
     &:checked ~ span::before {
       border-color: #c4092f;
     }
+
+    &:focus ~ span::before {
+      outline: -webkit-focus-ring-color auto 5px;
+    }
   }
 
   .custom-radio span {

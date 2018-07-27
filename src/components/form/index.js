@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { reduxForm, Field } from 'redux-form';
 import './style.css';
 
-const validateYear = value => (value > 0 && value < (new Date()).getFullYear() ? undefined : 'Invalid year');
+const validateYear = value => (value > 0 && value < (new Date()).getFullYear() + 1 ? undefined : 'Invalid year');
 const validatePrice = value => value > 0 ? undefined : 'Invalid price';
 
 const renderField = ({
@@ -10,11 +10,12 @@ const renderField = ({
   label,
   id,
   type,
+  tabIndex,
   placeholder,
   meta: { touched, error }
 }) => (
   <div>
-    <input {...input} placeholder={placeholder} type={type} id={id} />
+    <input {...input} placeholder={placeholder} type={type} id={id} tabIndex={tabIndex}/>
     {touched &&
       ((error && <span className='valid-error'>{error}</span>))}
     <label htmlFor={id}>{label}</label>
@@ -22,6 +23,13 @@ const renderField = ({
 )
 
 class AddItemForm extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      isMobile: null,
+    }
+  }
+
   addItem = (values) => {
     this.props.addItem(values);
     this.props.reset();
@@ -32,15 +40,15 @@ class AddItemForm extends Component {
       <form className='add-form' onSubmit={this.props.handleSubmit(this.addItem)}>
         <div className='container'>
           <div className='field name'>
-            <Field type='text' component={renderField} required name='title' id='title'  placeholder='Название'/>
+            <Field type='text' component={renderField} required name='title' id='title' tabIndex='1' placeholder='Название'/>
             <label htmlFor='title'>Название</label>
           </div>
           <div className='field price'>
-            <Field type='number' component={renderField} required name='price' id='price' placeholder='Цена' validate={validatePrice} parse={value => !value ? null: Number(value)} />
+            <Field type='number' component={renderField} required name='price' id='price' placeholder='Цена' tabIndex={ this.state.isMobile ? 2 : 3 } validate={validatePrice} parse={value => !value ? null: Number(value)} />
             <label htmlFor='price'>Цена</label>
           </div>
           <div className='field year'>
-            <Field type='number' component={renderField} required name='year' id='year' placeholder='Год' validate={validateYear} parse={value => !value ? null : Number(value)} />
+            <Field type='number' component={renderField} required name='year' id='year' placeholder='Год' tabIndex={ this.state.isMobile ? 3 : 2 } validate={validateYear} parse={value => !value ? null : Number(value)} />
             <label htmlFor='year'>Год</label>
           </div>
           <div className='field desc'>
@@ -91,6 +99,24 @@ class AddItemForm extends Component {
       </form>
     )
   }
+
+  updateDimensions = () => {
+    if(window.innerWidth < 720) {
+      this.setState({ isMobile: true });
+    } else {
+      this.setState({ isMobile: false });
+    }
+  }
+
+  componentDidMount() {
+    this.updateDimensions();
+    window.addEventListener("resize", this.updateDimensions);
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener("resize", this.updateDimensions);
+  }
+
 }
 
 
