@@ -37,6 +37,14 @@
     color: #999;
   }
 
+  .valid-error {
+    position: absolute;
+    top: 105%;
+    left: 0;
+    font-size: 9px;
+    color: #c4092f;
+  }
+
   input[type='text'],
   input[type='number'],
   select
@@ -65,6 +73,10 @@
     &:focus {
       border-bottom-color: #000;
       outline: none;
+
+      &:hover {
+        border-bottom-color: #000;
+      }
     }
 
     &:hover {
@@ -78,7 +90,7 @@
   }
 
   select {
-    background: url('../imgs/arrow.svg') no-repeat calc(100% - 16px) center;
+    background: url('../../assets/imgs/arrow.svg') no-repeat calc(100% - 16px) center;
   }
 }
 
@@ -200,9 +212,6 @@
       background-color: #88c504;
     }
   }
-
-
-
 }
 
 .status {
