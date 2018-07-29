@@ -15,7 +15,7 @@ const renderField = ({
   meta: { touched, error }
 }) => (
   <div>
-    <input {...input} placeholder={placeholder} type={type} id={id} tabIndex={tabIndex}/>
+    <input {...input} placeholder={placeholder} type={type} id={id} tabIndex={tabIndex} />
     {touched &&
       ((error && <span className='valid-error'>{error}</span>))}
     <label htmlFor={id}>{label}</label>
@@ -40,20 +40,16 @@ class AddItemForm extends Component {
       <form className='add-form' onSubmit={this.props.handleSubmit(this.addItem)}>
         <div className='container'>
           <div className='field name'>
-            <Field type='text' component={renderField} required name='title' id='title' tabIndex='1' placeholder='Название'/>
-            <label htmlFor='title'>Название</label>
+            <Field type='text' component={renderField} required name='title' id='title' tabIndex='1' placeholder='Название' label='Название'/>
           </div>
           <div className='field price'>
-            <Field type='number' component={renderField} required name='price' id='price' placeholder='Цена' tabIndex={ this.state.isMobile ? 2 : 3 } validate={validatePrice} parse={value => !value ? null: Number(value)} />
-            <label htmlFor='price'>Цена</label>
+            <Field type='number' component={renderField} required name='price' id='price' placeholder='Цена' label='Цена' tabIndex={ this.state.isMobile ? 2 : 3 } validate={validatePrice} parse={value => !value ? null: Number(value)} />
           </div>
           <div className='field year'>
-            <Field type='number' component={renderField} required name='year' id='year' placeholder='Год' tabIndex={ this.state.isMobile ? 3 : 2 } validate={validateYear} parse={value => !value ? null : Number(value)} />
-            <label htmlFor='year'>Год</label>
+            <Field type='number' component={renderField} required name='year' id='year' placeholder='Год' label='Год' tabIndex={ this.state.isMobile ? 3 : 2 } validate={validateYear} parse={value => !value ? null : Number(value)} />
           </div>
           <div className='field desc'>
-            <Field type='text' component={renderField} name='description' id='description' placeholder='Описание' />
-            <label htmlFor='desc'>Описание</label>
+            <Field type='text' component={renderField} name='description' id='description' placeholder='Описание' label='Описание' />
           </div>
           <div className='field colors'>
             <label>Цвет</label>
