@@ -25,7 +25,7 @@ const itemsState = handleActions({
   },
   [actions.addItem](state, { payload }) {
     const newId = +(new Date());
-    return { [newId]: { id: newId, ...payload }, ...state };
+    return { ...state, [newId]: { id: newId, ...payload } };
   },
 }, {})
 

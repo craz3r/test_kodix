@@ -1,3 +1,6 @@
+//polyfills
+import 'core-js/fn/object/values';
+
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './assets/styles/index.css';
@@ -7,14 +10,14 @@ import thunk from 'redux-thunk';
 import { createStore, applyMiddleware, compose } from 'redux';
 import reducers from './reducers';
 
-const ext = window.__REDUX_DEVTOOLS_EXTENSION__;
-const devtoolMiddleware = ext && ext();
+//const ext = window.__REDUX_DEVTOOLS_EXTENSION__;
+//const devtoolMiddleware = ext && ext();
 
 const store = createStore(
   reducers,
   compose(
     applyMiddleware(thunk),
-    devtoolMiddleware,
+    //devtoolMiddleware,
   ),
 );
 

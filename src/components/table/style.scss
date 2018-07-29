@@ -45,76 +45,13 @@
   width: 100%;
   color: #282d30;
   border-collapse: collapse;
+  display: flex;
+  flex-direction: column;
 
   @media screen and (min-width: 720px) {
     td,
     th {
       box-sizing: border-box;
-    }
-
-    td:first-child,
-    th:first-child {
-      width: 38%;
-    }
-
-    td:nth-child(2),
-    th:nth-child(2) {
-      width: 8%;
-      text-align: center;
-    }
-
-    td:nth-child(3),
-    th:nth-child(3) {
-      width: 9%;
-      text-align: center;
-    }
-
-    td:nth-child(4),
-    th:nth-child(4) {
-      width: 12%;
-      text-align: left;
-    }
-
-    td:nth-child(5),
-    th:nth-child(5) {
-      width: 18%;
-      text-align: left;
-    }
-  }
-
-  @media screen and (min-width: 980px) {
-    td,
-    th {
-      box-sizing: border-box;
-    }
-
-    td:first-child,
-    th:first-child {
-      width: 45%;
-    }
-
-    td:nth-child(2),
-    th:nth-child(2) {
-      width: 10%;
-      text-align: center;
-    }
-
-    td:nth-child(3),
-    th:nth-child(3) {
-      width: 8%;
-      text-align: center;
-    }
-
-    td:nth-child(4),
-    th:nth-child(4) {
-      width: 12%;
-      text-align: left;
-    }
-
-    td:nth-child(5),
-    th:nth-child(5) {
-      width: 14%;
-      text-align: left;
     }
   }
 
@@ -122,7 +59,7 @@
     display: none;
 
     @media screen and (min-width: 720px) {
-      display: block;
+      display: flex;
       border-collapse: collapse;
       background-color: #c4092f;
       color: #fff;
@@ -132,6 +69,7 @@
 
       tr {
         display: flex;
+        width: 100%;
         padding: 14px 0;
       }
 
@@ -143,6 +81,9 @@
 
   tbody,
   tfoot {
+    display: flex;
+    flex-direction: column;
+
     tr {
       display: flex;
       flex-wrap: wrap;
@@ -161,6 +102,8 @@
 
       @media screen and (min-width: 720px) {
         padding: 0 10px;
+        display: block;
+        flex: auto;
       }
 
       &:empty {
@@ -171,20 +114,33 @@
 }
 
 .results__title {
+  min-width: 35%;
   width: 35%;
   text-align: left;
+
+  @media screen and (min-width: 720px) {
+    min-width: 38%;
+    width: 38%;
+  }
+
+  @media screen and (min-width: 980px) {
+    min-width: 45%;
+    width: 45%;
+  }
 }
 
 .results__desc {
-  width: 100%;
+  min-width: 100%;
   font-size: 13px;
   color: #8b9497;
 
   @media screen and (min-width: 720px) {
+    min-width: 35%;
     width: 35%;
   }
 
   @media screen and (min-width: 980px) {
+    min-width: 100%;
     width: 100%;
   }
 }
@@ -195,6 +151,14 @@
   @media screen and (min-width: 720px) {
     order: 0;
     margin-left: 0;
+    min-width: 9%;
+    width: 9%;
+    text-align: center;
+  }
+
+  @media screen and (min-width: 980px) {
+    min-width: 8%;
+    width: 8%;
   }
 
   span {
@@ -212,6 +176,7 @@
 
 .results__price {
   margin-left: 10px;
+  min-width: 100px;
   width: 100px;
   position: relative;
 
@@ -225,6 +190,14 @@
 
   @media screen and (min-width: 720px) {
     margin-left: 0;
+    min-width: 18%;
+    width: 18%;
+    text-align: left;
+  }
+
+  @media screen and (min-width: 980px) {
+    min-width: 14%;
+    width: 14%;
   }
 }
 
@@ -241,6 +214,9 @@
 
   @media screen and (min-width: 720px) {
     order: 0;
+    min-width: 12%;
+    width: 12%;
+    text-align: left;
   }
 }
 
