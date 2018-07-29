@@ -1,1 +1,1 @@
-## For run this app go to [massive-lock.surge.sh](http://massive-lock.surge.sh)
+## For run this app go to [nice-pot.surge.sh](http://nice-pot.surge.sh/)
